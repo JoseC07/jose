@@ -1,0 +1,1 @@
+export type SectionId = 'projects' | 'blog' | 'contact'; 

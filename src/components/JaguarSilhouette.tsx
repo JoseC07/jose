@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
 type PositionType = 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky';
@@ -44,6 +43,9 @@ function JaguarSilhouette({
   const outerRadius = 224;
   const innerRadius = 192;
   const smallCircleRadius = 10.5;
+  
+  // Prevent unused variable warnings
+  void { themeColors, animated, interactive };
   
   // Arc parameters
   const arcFraction = 1/50; // 1/50 of the circle

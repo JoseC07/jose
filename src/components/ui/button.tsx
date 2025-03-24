@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+
 import { Slot } from '@radix-ui/react-slot';
 import type { VariantProps } from 'class-variance-authority';
 import { cva } from 'class-variance-authority';
@@ -28,7 +28,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         metallic:
-          "bg-gradient-to-r from-[#D4AF37] to-[#4A3F1F] text-white shadow-sm hover:from-[#E6C84F] hover:to-[#5A4F2F] border border-[#FFD700]/300",
+          "bg-gradient-to-r from-[#D4AF37] to-[#4A3F1F] font-bold text-white shadow-sm hover:from-[#E6C84F] hover:to-[#5A4F2F] ",
       },
       size: {
         default: "h-9 px-4 py-2",
@@ -94,13 +94,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             }
             
             .shimmer-effect {
-              animation: shimmer 3s infinite linear;
+              animation: shimmer 10s infinite linear;
               animation-play-state: running !important;
               will-change: background-position;
             }
             
             button:hover .shimmer-effect {
-              animation: shimmer 1.5s infinite linear;
+              animation: shimmer 5s infinite linear;
             }
             
             @keyframes flair {

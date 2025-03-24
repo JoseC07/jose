@@ -5,6 +5,8 @@ import { Button } from '../components/ui/button';
 import CustomImage from '../components/CustomImage';
 import JaguarSilhouette from '../components/JaguarSilhouette';
 
+import { SectionId } from '../types/navigation';
+
 export default function Home() {
   const handleButtonClick = () => {
     const projectsSection = document.getElementById('projects');
@@ -13,25 +15,42 @@ export default function Home() {
     }
   };
 
+  // Handler for circular navbar section clicks
+  const handleSectionClick = (id: SectionId) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Define sections for circular navbar
+  const navSections: { id: SectionId; label: string }[] = [
+    { id: 'blog', label: 'blog' },
+    { id: 'projects', label: 'projects' },
+    { id: 'contact', label: 'contact' },
+  ];
+
   return (
     <div className="min-h-screen bg-slate-900 text-white">
       {/* Header Section */}
-      <header className="relative">
+      <header className="relative" id="experience">
         {/* Player Buttons */}
         {/* <div className="absolute top-4 right-6 md:right-12 z-20">
           <CosmicButtons/>
         </div> */}
 
-        <div className="relative h-[300px] w-full overflow-hidden">
-          {/* Banner Image */}
-          <CustomImage
-            src="/assets/images/setup.jpg"
-            alt="Tech workspace setup"
-            fill
-            className="object-cover"
-          />
+        <div className="relative h-[160px] md:h-[300px] w-full overflow-hidden">
+          {/* Banner Image - center-focused on mobile, full width on larger screens */}
+          <div className="absolute inset-0 md:inset-0">
+            <CustomImage
+              src="/assets/images/setup.jpg"
+              alt="Tech workspace setup"
+              fill
+              className="object-cover object-center md:object-center scale-125 md:scale-100"
+            />
+          </div>
           {/* Overlay gradient for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 to-slate-800/50">
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-slate-800/70 md:from-slate-900/80 md:to-slate-800/50">
             {/* Subtle lightning bolt flare */}
             <div className="absolute right-20 top-1/2 h-40 w-1 bg-yellow-400 opacity-60 blur-md transform -rotate-20"></div>
             <div className="absolute right-24 top-1/2 h-40 w-1 bg-yellow-400 opacity-60 blur-md transform -rotate-30"></div>
@@ -48,56 +67,72 @@ export default function Home() {
             interactive={true}
           />
           </div>
-          {/* Text Overlay */}
-          <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-12">
-            <h1 className="font-serif text-3xl md:text-5xl italic font-bold tracking-wide">Jose G. Caudillo Jr.</h1>
-            <h2 className="mt-2 text-lg md:text-xl font-medium">Systems & Cloud Specialist | DevOps | AI Enthusiast</h2>
-            <div className="mt-4 flex items-center space-x-4">
+          {/* Text Overlay - Name and icons only on mobile */}
+          <div className="absolute inset-0 flex flex-col justify-start pt-10 md:pt-16 px-6 md:px-12">
+            <h1 className="font-serif text-xl md:text-5xl italic font-bold tracking-wide">Jose G. Caudillo Jr.</h1>
+            {/* Title only visible on desktop */}
+            <h2 className="hidden md:block mt-2 text-xl font-medium">Systems & Cloud Specialist | DevOps | AI Enthusiast</h2>
+            
+            {/* Contact links - smaller icons on mobile */}
+            <div className="mt-2 md:mt-4 flex items-center space-x-3">
               <a
                 href="mailto:caudillojose5@gmail.com"
-                className="flex items-center text-sm hover:text-yellow-400 transition-colors"
+                className="flex items-center hover:text-yellow-400 transition-colors"
+                aria-label="Email"
               >
-                <Mail className="mr-1 h-4 w-4" />
-                caudillojose5@gmail.com
+                <Mail className="h-3.5 w-3.5 md:h-4 md:w-4" />
+                <span className="hidden md:inline ml-1 text-sm">caudillojose5@gmail.com</span>
               </a>
               <a
                 href="https://linkedin.com/in/josecaud"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center text-sm hover:text-yellow-400 transition-colors"
+                className="flex items-center hover:text-yellow-400 transition-colors"
+                aria-label="LinkedIn"
               >
-                <Linkedin className="mr-1 h-4 w-4" />
-                linkedin.com/in/josecaud
+                <Linkedin className="h-3.5 w-3.5 md:h-4 md:w-4" />
+                <span className="hidden md:inline ml-1 text-sm">linkedin.com/in/josecaud</span>
               </a>
               <a
                 href="https://github.com/josec07"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center text-sm hover:text-yellow-400 transition-colors"
+                className="flex items-center hover:text-yellow-400 transition-colors"
+                aria-label="GitHub"
               >
-                <Github className="mr-1 h-4 w-4" />
-                github.com/josec07
+                <Github className="h-3.5 w-3.5 md:h-4 md:w-4" />
+                <span className="hidden md:inline ml-1 text-sm">github.com/josec07</span>
               </a>
             </div>
           </div>
         </div>
 
-        {/* Profile Picture */}
-        <div className="absolute -bottom-16 left-6 md:left-12">
-          <div className="h-32 w-32 rounded-full border-4 border-slate-900 overflow-hidden">
+        {/* Profile Picture - with custom positioning */}
+        <div className="absolute -bottom-10 md:-bottom-16 left-4 md:left-12">
+          <div className="h-24 w-24 md:h-32 md:w-32 rounded-full border-3 md:border-4 border-slate-900 overflow-hidden">
             <CustomImage
               src="/assets/images/profile.png"
               alt="Jose G. Caudillo Jr."
               width={128}
               height={128}
-              className="object-cover"
+              className="object-cover w-full h-full object-[center_80%]"
             />
           </div>
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="container mx-auto px-6 pt-24 pb-16 max-w-4xl">
+      {/* Title for mobile - positioned with consistent spacing */}
+      <div className="md:hidden bg-slate-900 px-8 pt-2 pb-4">
+        <div className="flex items-center">
+          <div className="w-20"></div> {/* Space for profile picture */}
+          <div className="pl-12">
+            <h2 className="text-xs font-medium">Systems & Cloud Specialist | DevOps | AI Enthusiast</h2>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content - consistent spacing from title */}
+      <main className="container mx-auto px-6 pt-4 md:pt-24 pb-16 max-w-4xl">
         {/* Experience Section */}
         <section className="mb-16">
           <h2 className="text-2xl font-bold mb-6">Experience</h2>
@@ -160,30 +195,7 @@ export default function Home() {
         </div>
 
         {/* Projects Section */}
-        <section className="mb-16 relative">
-          {/* Subtle jaguar watermark */}
-          
-          <JaguarSilhouette
-            width={200} // Reduced size to fit better
-            height={200}
-            position="absolute"
-            className="bottom-0 right-0 opacity-30" // Increased opacity for visibility
-            opacity="opacity-80"
-            themeColors={['#FFD700', '#4A3F1F']} // Match the button's yellow flair
-            animated={true}
-            interactive={true}
-          />
-          <Button
-            className="absolute bottom-4 right-4 opacity-100 z-10"
-            variant='metallic'
-            size="sm"
-            onClick={handleButtonClick}
-            showArrow={true}
-          >
-            Explore Live Demos
-          </Button>
-        
-
+        <section className="mb-16 relative" id="projects">
           <h2 className="text-2xl font-bold mb-6">Projects</h2>
           <div className="space-y-8">
             <div className="space-y-2">
@@ -202,10 +214,33 @@ export default function Home() {
               </ul>
             </div>
           </div>
+          
+          {/* Demo section - moved below project content */}
+          <div className="mt-10 flex flex-col items-center relative">
+            <JaguarSilhouette
+              width={150}
+              height={150}
+              position="relative"
+              className="opacity-40 mx-auto mb-4"
+              themeColors={['#FFD700', '#4A3F1F']}
+              animated={true}
+              interactive={true}
+            />
+            <Button
+              className="text-white z-10 text-base font-medium shadow-lg hover:shadow-xl focus:ring-2 focus:ring-yellow-400 transition-all"
+              variant='metallic'
+              size="lg"
+              onClick={handleButtonClick}
+              showArrow={true}
+              aria-label="View projects and live demonstrations"
+            >
+              Explore Live Demos
+            </Button>
+          </div>
         </section>
 
-                {/* Skills Section */}
-                <section className="mb-16">
+        {/* Skills Section */}
+        <section className="mb-16" id="skills">
           <h2 className="text-2xl font-bold mb-6">Skills</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
@@ -286,6 +321,12 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Circular Navbar */}
+      {/* <CircularNavbar 
+        sections={navSections}
+        onSectionClick={handleSectionClick}
+      /> */}
     </div>
   );
 } 
