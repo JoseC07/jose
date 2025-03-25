@@ -1,0 +1,43 @@
+/* --------------------------------- */
+/* Button Animations                  */
+/* --------------------------------- */
+
+/**
+ * Shine Effect
+ * Creates a sliding shine animation for metallic buttons
+ */
+@keyframes shine {
+  0% { transform: translateX(-200%); }
+  100% { transform: translateX(200%); }
+}
+
+/* This class is no longer needed as we're using Tailwind's animation utilities
+.animate-shine {
+  animation: shine 2s ease-in-out infinite;
+}
+*/
+
+/* --------------------------------- */
+/* Hover Effects                     */
+/* --------------------------------- */
+
+/**
+ * Metallic Gradient
+ * Updated styles for more transparency and a blue-gray color scheme matching the theme
+ */
+.metallic-gradient {
+  background: linear-gradient(to right, rgba(100,116,139,0.6), rgba(30,41,59,0.6));
+  backdrop-filter: blur(4px);
+}
+
+.metallic-gradient:hover {
+  background: linear-gradient(to right, rgba(120,136,159,0.6), rgba(55,65,81,0.6));
+}
+
+/* Adjust the shine animation to be slower and match the color scheme */
+.metallic-gradient::before {
+  animation: shine 3s ease-in-out infinite;
+  background: linear-gradient(to right, transparent, rgba(150,180,210,0.1), transparent);
+}
+
+/* Add more animation categories as needed */ 

@@ -5,6 +5,14 @@ import type { VariantProps } from 'class-variance-authority';
 import { cva } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
+// Import animations
+import '../../styles/animations/effects.css';
+
+/**
+ * Button Props Interface
+ * @property asChild - Allows button to be rendered as a child component
+ * @property showArrow - Shows/hides the arrow icon
+ */
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
@@ -12,29 +20,41 @@ export interface ButtonProps
   showArrow?: boolean;
 }
 
+/**
+ * Button Variants Configuration
+ * Defines different styles and sizes for the button component
+ */
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative overflow-hidden",
+  "inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-all disabled:opacity-50 disabled:pointer-events-none",
   {
     variants: {
       variant: {
-        default:
-          "bg-primary text-primary-foreground shadow hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
-        outline:
-          "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+        // Basic variants
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        metallic:
-          "bg-gradient-to-r from-[#D4AF37] to-[#4A3F1F] font-bold text-white shadow-sm hover:from-[#E6C84F] hover:to-[#5A4F2F] ",
+        
+        // Special variants
+        metallic: [
+          "relative overflow-hidden",
+          "metallic-gradient", // Using external CSS class
+          "text-gray-200",
+          "border border-white/15",
+          "shadow-sm",
+          "before:absolute before:inset-0",
+          "before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent",
+          "before:translate-x-[-200%]",
+          "before:animate-shine", // Apply animation constantly, not just on hover
+        ].join(" "),
       },
       size: {
         default: "h-9 px-4 py-2",
-        sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-10 rounded-md px-8",
-        icon: "h-9 w-9",
+        sm: "h-7 px-2 text-xs",
+        lg: "h-10",
+        icon: "h-7 w-7",
       },
     },
     defaultVariants: {
@@ -44,6 +64,10 @@ const buttonVariants = cva(
   }
 );
 
+/**
+ * Button Component
+ * A versatile button component with multiple variants and sizes
+ */
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, showArrow = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
@@ -54,18 +78,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        <span className="relative z-10">{props.children}</span>
-        
-        {variant === "metallic" && (
-          <span
-            className="absolute inset-0 z-0 shimmer-effect"
-            style={{
-              background: 'linear-gradient(90deg, rgba(0,0,0,0), rgba(255, 215, 0, 0.5), rgba(0,0,0,0))',
-              backgroundSize: '200% 100%',
-            }}
-          />
-        )}
-        
+        <span className="relative">{props.children}</span>
         {showArrow && (
           <svg
             width="12"
@@ -76,53 +89,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="relative z-10"
           >
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         )}
-        
-        <style>
-          {`
-            @keyframes shimmer {
-              0% {
-                background-position: 200% 0;
-              }
-              100% {
-                background-position: -200% 0;
-              }
-            }
-            
-            .shimmer-effect {
-              animation: shimmer 10s infinite linear;
-              animation-play-state: running !important;
-              will-change: background-position;
-            }
-            
-            button:hover .shimmer-effect {
-              animation: shimmer 5s infinite linear;
-            }
-            
-            @keyframes flair {
-              0% {
-                transform: translateX(-100%);
-                opacity: 0;
-              }
-              5% {
-                transform: translateX(0%);
-                opacity: 1;
-              }
-              10% {
-                transform: translateX(100%);
-                opacity: 1;
-              }
-              100% {
-                transform: translateX(100%);
-                opacity: 0;
-              }
-            }
-          `}
-        </style>
       </Comp>
     );
   }

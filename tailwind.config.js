@@ -8,7 +8,8 @@ export default {
   safelist: [
     'animate-ring',
     'animate-dot',
-    'fill-lightning'
+    'fill-lightning',
+    'animate-shine'
   ],
   prefix: "",
   theme: {
@@ -83,12 +84,17 @@ export default {
           '0%': { opacity: 0 },
           '50%': { opacity: 1 },
           '100%': { opacity: 0 },
+        },
+        "shine": {
+          '0%': { transform: 'translateX(-200%)' },
+          '100%': { transform: 'translateX(200%)' },
         }
       },
       animation: {
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "ring": "rotate-ring 20s linear infinite",
         "dot": "pulse-dot 3s infinite",
+        "shine": "shine 2s ease-in-out infinite",
       },
       transitionDuration: {
         '2000': '2000ms',
