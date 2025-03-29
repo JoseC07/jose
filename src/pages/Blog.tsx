@@ -4,8 +4,8 @@ import GlobalFooter from '../components/sections/GlobalFooter';
 
 export default function Blog() {
   return (
-    <div className="min-h-screen bg-slate-900 text-white">
-      <div id="main-content" className="container mx-auto px-6 py-16 max-w-4xl">
+    <div className="min-h-screen bg-slate-900 text-white flex flex-col">
+      <div id="main-content" className="container mx-auto px-6 py-16 max-w-4xl flex-grow">
         <div className="mb-8">
           <Link to="/experience" className="text-yellow-400 hover:underline">
             ← Back to Experience

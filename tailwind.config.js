@@ -21,6 +21,9 @@ export default {
       },
     },
     extend: {
+      spacing: {
+        // 'debug-footer-md': '10rem',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

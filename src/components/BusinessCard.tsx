@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import SkillGraph from './Graph/SkillGraph'; // Updated import
 import { Mail, Github, Linkedin } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const CardContainer = styled.div`
   width: 60vw;
@@ -309,13 +310,13 @@ const BusinessCard = () => {
             <Mail size={20} />
           </SocialIcon>
         </SocialMediaContainer>
-        <a
-          href="/experience"
+        <Link
+          to="/experience"
           title="Click to view my work experience and portfolio projects"
           style={{ textDecoration: 'none' }}
         >
           <Button>See My Work</Button>
-        </a>
+        </Link>
       </FooterSection>
     </CardContainer>
   );

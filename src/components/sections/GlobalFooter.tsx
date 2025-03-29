@@ -4,7 +4,7 @@ import SocialLink from '../ui/SocialLink';
 
 export default function GlobalFooter() {
   return (
-    <footer className="bg-slate-800 py-8">
+    <footer className="bg-slate-800 py-8 pb-80 md:pb-40">
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="grid grid-cols-1 items-center gap-6">
           {/* Combined "Let's Connect" Section */}

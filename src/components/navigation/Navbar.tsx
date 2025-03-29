@@ -111,7 +111,7 @@ export default function Navbar({ mobileBreakpoint = 768 }: NavbarProps) {
         </ul>
       ) : (
         // Collapsed View
-        <ul className="flex flex-row justify-center space-x-4 py-2">
+        <ul className="flex flex-row justify-center items-center h-full space-x-4">
           {navigationItems.map((item: NavigationItem) => (
             <li key={item.id}>
               {item.isExternal ? (

@@ -1,7 +1,8 @@
-import { Mail, Github, Linkedin } from 'lucide-react';
+import { Mail, Github, Linkedin, ArrowLeft } from 'lucide-react';
 import CustomImage from '../ui/Image';
 import JaguarSilhouette from '../ui/JaguarSilhouette';
 import SocialLink from '../ui/SocialLink';
+import { Link } from 'react-router-dom';
 
 export default function Hero() {
   return (
@@ -65,7 +66,12 @@ const LightningEffects = () => (
 
 // Profile Information
 const ProfileInfo = () => (
-  <div className="absolute inset-0 flex flex-col justify-start pt-10 md:pt-16 px-6 md:px-12">
+  <div className="relative z-10 inset-0 flex flex-col justify-start pt-4 md:pt-8 px-6 md:px-12">
+    <Link to="/" className="inline-flex items-center space-x-1 text-yellow-400 hover:text-yellow-300 hover:underline mb-2 md:mb-4 self-start">
+      <ArrowLeft size={16} />
+      <span>Home</span>
+    </Link>
+    
     <h1 className="font-serif text-xl md:text-5xl italic font-bold tracking-wide">Jose G. Caudillo Jr.</h1>
     <h2 className="hidden md:block mt-2 text-xl font-medium">Systems & Cloud Specialist | DevOps | AI Enthusiast</h2>
     

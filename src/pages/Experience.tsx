@@ -8,10 +8,10 @@ import SectionDivider from '../components/ui/SectionDivider';
 
 export default function ExperiencePage() {
   return (
-    <div className="min-h-screen bg-slate-900 text-white">
+    <div className="min-h-screen bg-slate-900 text-white flex flex-col">
       <Hero />
       
-      <main id="main-content" className="container mx-auto px-6 pt-4 md:pt-24 pb-16 max-w-4xl">
+      <main id="main-content" className="container mx-auto px-6 pt-4 md:pt-24 pb-16 max-w-4xl flex-grow">
         <Experience />
         
         <SectionDivider />
