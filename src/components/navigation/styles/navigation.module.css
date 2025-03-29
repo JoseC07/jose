@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navContainer {
+  @apply fixed bottom-4 left-0 right-0 mx-auto max-w-3xl;
+  @apply bg-slate-800/10 backdrop-blur-sm rounded-lg shadow-lg;
+  @apply z-50 border border-slate-700 transition-all duration-300;
+}
+
+.expanded {
+  @apply h-auto py-4;
+}
+
+.collapsed {
+  @apply h-12;
+}
+
+.navLink {
+  @apply flex items-center text-white hover:text-yellow-400 transition-colors;
+}
+
+.navLinkActive {
+  @apply text-yellow-400;
+}
+
+.blogLinkActive {
+  @apply text-blue-400;
+}
+
+.subsectionList {
+  @apply mt-1 space-y-1 pl-4;
+}
+
+.subsectionLink {
+  @apply flex items-center space-x-2 text-slate-300 hover:text-yellow-400;
+}
+
+@media (max-width: 768px) {
+  .navContainer {
+    @apply scale-90 origin-bottom;
+  }
+} 

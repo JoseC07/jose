@@ -6,7 +6,7 @@ import Services from '../components/sections/Services';
 import GlobalFooter from '../components/sections/GlobalFooter';
 import SectionDivider from '../components/ui/SectionDivider';
 
-export default function Home() {
+export default function ExperiencePage() {
   return (
     <div className="min-h-screen bg-slate-900 text-white">
       <Hero />

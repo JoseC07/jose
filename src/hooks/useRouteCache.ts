@@ -1,0 +1,1 @@
+// Delete this entire file - modern browsers handle caching automatically 

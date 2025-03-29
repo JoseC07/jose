@@ -1,5 +1,5 @@
 import { Mail, Github, Linkedin } from 'lucide-react';
-import CustomImage from '../CustomImage';
+import CustomImage from '../ui/Image';
 import JaguarSilhouette from '../ui/JaguarSilhouette';
 import SocialLink from '../ui/SocialLink';
 
@@ -79,17 +79,17 @@ const SocialLinks = () => (
     <SocialLink 
       href="mailto:caudillojose5@gmail.com" 
       icon={<Mail className="h-3.5 w-3.5 md:h-4 md:w-4" />} 
-      text="caudillojose5@gmail.com" 
+      text="Connect" 
     />
     <SocialLink 
       href="https://linkedin.com/in/josecaud" 
       icon={<Linkedin className="h-3.5 w-3.5 md:h-4 md:w-4" />} 
-      text="linkedin.com/in/josecaud" 
+      text="Linkedin" 
     />
     <SocialLink 
       href="https://github.com/josec07" 
       icon={<Github className="h-3.5 w-3.5 md:h-4 md:w-4" />} 
-      text="github.com/josec07" 
+      text="Github" 
     />
   </div>
 );

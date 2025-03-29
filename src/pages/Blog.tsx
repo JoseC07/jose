@@ -7,8 +7,8 @@ export default function Blog() {
     <div className="min-h-screen bg-slate-900 text-white">
       <div id="main-content" className="container mx-auto px-6 py-16 max-w-4xl">
         <div className="mb-8">
-          <Link to="/" className="text-yellow-400 hover:underline">
-            ← Back to Home
+          <Link to="/experience" className="text-yellow-400 hover:underline">
+            ← Back to Experience
           </Link>
         </div>
 

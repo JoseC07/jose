@@ -1,0 +1,28 @@
+{
+  "Comment": "Distribution for jose-caudillo-portfolio",
+  "CacheBehaviors": {
+    "Quantity": 1,
+    "Items": [
+      {
+        "PathPattern": "assets/*",
+        "TargetOriginId": "S3-jose-caudillo-portfolio",
+        "ViewerProtocolPolicy": "redirect-to-https",
+        "MinTTL": 31536000,
+        "DefaultTTL": 31536000,
+        "MaxTTL": 31536000,
+        "Compress": true,
+        "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6"
+      }
+    ]
+  },
+  "DefaultCacheBehavior": {
+    "ViewerProtocolPolicy": "redirect-to-https",
+    "MinTTL": 0,
+    "DefaultTTL": 86400,
+    "MaxTTL": 31536000,
+    "Compress": true,
+    "FunctionAssociations": {
+      "Quantity": 0
+    }
+  }
+} 
