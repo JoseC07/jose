@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'; // Use Link for internal navigation
 import { Button } from '../components/ui/button'; // Reusing existing Button
 import CustomImage from '../components/ui/Image'; // Import the CustomImage component
-import BussinessCard from '../components/ui/BussinessCard';
+import BusinessCard from '../components/BusinessCard';
 
 export default function LandingPage() {
   return (
@@ -27,7 +27,7 @@ export default function LandingPage() {
 
       {/* Content */}
       <div className="relative z-10 flex justify-center items-center w-full">
-        <BussinessCard />
+        <BusinessCard />
       </div>
     </div>
   );
