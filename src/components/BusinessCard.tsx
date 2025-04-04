@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import SkillGraph from './Graph/SkillGraph'; // Updated import
-import { Mail, Github, Linkedin } from 'lucide-react';
+import { Github, Linkedin} from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 const CardContainer = styled.div`
   width: 60vw;
@@ -198,15 +198,16 @@ const Button = styled.button`
   border-radius: 0.5rem;
   background-color: transparent;
   color: #d4af37;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-family: 'Georgia', serif;
   font-weight: bold;
   cursor: pointer;
   border: 2px solid #d4af37;
-  margin-top: 1.5rem;
   z-index: 2;
   transition: all 0.3s ease;
   box-shadow: 0 0 5px rgba(212, 175, 55, 0);
+  text-decoration: none;
+  display: inline-block;
 
   &:hover {
     background-color: #d4af37;
@@ -222,8 +223,20 @@ const Button = styled.button`
 
   @media (max-width: 768px) {
     padding: 0.6rem 1.2rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media (max-width: 768px) {
     margin-top: 1rem;
+    gap: 0.8rem;
   }
 `;
 
@@ -275,7 +288,7 @@ const BusinessCard = () => {
     <CardContainer>
       <HeaderSection>
         <Title>JOSE G. CAUDILLO JR.</Title>
-        <Subtitle>SYSTEMS & CLOUD SPECIALIST | DEVOPS | AI ENTHUSIAST</Subtitle>
+        <Subtitle>BACKEND ENGINEER | CLOUD & SYSTEMS SPECIALIST</Subtitle>
       </HeaderSection>
 
       <GraphSection $isMobile={isMobile}>
@@ -300,23 +313,37 @@ const BusinessCard = () => {
       <FooterSection>
         <Tagline>BUILDING DYNAMIC SYSTEMS</Tagline>
         <SocialMediaContainer>
-          <SocialIcon href="https://linkedin.com/in/josecaud">
+          <SocialIcon href="https://linkedin.com/in/josecaud" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile">
             <Linkedin size={20} />
           </SocialIcon>
-          <SocialIcon href="https://github.com/josec07">
+          <SocialIcon href="https://github.com/josec07" target="_blank" rel="noopener noreferrer" title="GitHub Profile">
             <Github size={20} />
           </SocialIcon>
-          <SocialIcon href="mailto:caudillojose5@gmail.com">
-            <Mail size={20} />
-          </SocialIcon>
         </SocialMediaContainer>
-        <Link
-          to="/experience"
-          title="Click to view my work experience and portfolio projects"
-          style={{ textDecoration: 'none' }}
-        >
-          <Button>See My Work</Button>
-        </Link>
+
+        <ButtonContainer>
+          <RouterLink
+            to="/experience"
+            title="View my work experience and portfolio projects"
+            style={{ textDecoration: 'none' }}
+          >
+            <Button>Experience & Projects</Button>
+          </RouterLink>
+          <RouterLink
+            to="/blog"
+            title="Read my articles and insights"
+            style={{ textDecoration: 'none' }}
+          >
+            <Button>Blog</Button>
+          </RouterLink>
+          <RouterLink
+            to="/contact"
+            title="Get in touch or book a consultation"
+            style={{ textDecoration: 'none' }}
+          >
+            <Button>Contact Me</Button>
+          </RouterLink>
+        </ButtonContainer>
       </FooterSection>
     </CardContainer>
   );

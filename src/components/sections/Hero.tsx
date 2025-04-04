@@ -1,7 +1,6 @@
-import { Mail, Github, Linkedin, ArrowLeft } from 'lucide-react';
+import { Github, Linkedin, ArrowLeft, Download, Send } from 'lucide-react';
 import CustomImage from '../ui/Image';
 import JaguarSilhouette from '../ui/JaguarSilhouette';
-import SocialLink from '../ui/SocialLink';
 import { Link } from 'react-router-dom';
 
 export default function Hero() {
@@ -19,7 +18,7 @@ export default function Hero() {
         <div className="flex items-center">
           <div className="w-20"></div> {/* Space for profile picture */}
           <div className="pl-12">
-            <h2 className="text-xs font-medium">Systems & Cloud Specialist | DevOps | AI Enthusiast</h2>
+            <h2 className="text-xs font-medium">Backend Engineer | Cloud & Systems Specialist</h2>
           </div>
         </div>
       </div>
@@ -66,14 +65,14 @@ const LightningEffects = () => (
 
 // Profile Information
 const ProfileInfo = () => (
-  <div className="relative z-10 inset-0 flex flex-col justify-start pt-4 md:pt-8 px-6 md:px-12">
+  <div className="relative z-10 inset-0 flex flex-col justify-start pt-2 md:pt-8 px-6 md:px-12">
     <Link to="/" className="inline-flex items-center space-x-1 text-yellow-400 hover:text-yellow-300 hover:underline mb-2 md:mb-4 self-start">
       <ArrowLeft size={16} />
       <span>Home</span>
     </Link>
     
     <h1 className="font-serif text-xl md:text-5xl italic font-bold tracking-wide">Jose G. Caudillo Jr.</h1>
-    <h2 className="hidden md:block mt-2 text-xl font-medium">Systems & Cloud Specialist | DevOps | AI Enthusiast</h2>
+    <h2 className="hidden md:block mt-2 text-xl font-medium">Backend Engineer | Cloud & Systems Specialist</h2>
     
     <SocialLinks />
   </div>
@@ -82,21 +81,66 @@ const ProfileInfo = () => (
 // Social Links
 const SocialLinks = () => (
   <div className="mt-2 md:mt-4 flex items-center space-x-3">
-    <SocialLink 
-      href="mailto:caudillojose5@gmail.com" 
-      icon={<Mail className="h-3.5 w-3.5 md:h-4 md:w-4" />} 
-      text="Connect" 
-    />
-    <SocialLink 
-      href="https://linkedin.com/in/josecaud" 
-      icon={<Linkedin className="h-3.5 w-3.5 md:h-4 md:w-4" />} 
-      text="Linkedin" 
-    />
-    <SocialLink 
-      href="https://github.com/josec07" 
-      icon={<Github className="h-3.5 w-3.5 md:h-4 md:w-4" />} 
-      text="Github" 
-    />
+    {/* Contact Link */}
+    <a
+      href="/contact"
+      aria-label="Contact Me"
+      // Default/Mobile: yellow. Desktop: slate. Hover: yellow.
+      className="inline-flex items-center text-yellow-400 md:text-slate-300 hover:text-yellow-400 transition-colors group text-xs md:text-sm"
+    >
+      <Send className="h-3.5 w-3.5 md:h-4 md:w-4 flex-shrink-0" />
+      {/* Mobile: faint opacity. Desktop: full opacity. Color inherited. */}
+      <span className="ml-1.5 inline opacity-60 md:opacity-100">
+        Contact
+      </span>
+    </a>
+
+    {/* LinkedIn Link */}
+    <a
+      href="https://linkedin.com/in/josecaud"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="LinkedIn Profile"
+      // Default/Mobile: yellow. Desktop: slate. Hover: yellow.
+      className="inline-flex items-center text-yellow-400 md:text-slate-300 hover:text-yellow-400 transition-colors group text-xs md:text-sm"
+    >
+      <Linkedin className="h-3.5 w-3.5 md:h-4 md:w-4 flex-shrink-0" />
+      {/* Mobile: faint opacity. Desktop: full opacity. Color inherited. */}
+      <span className="ml-1.5 inline opacity-60 md:opacity-100">
+        Linkedin
+      </span>
+    </a>
+
+    {/* GitHub Link */}
+    <a
+      href="https://github.com/josec07"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="GitHub Profile"
+      // Default/Mobile: yellow. Desktop: slate. Hover: yellow.
+      className="inline-flex items-center text-yellow-400 md:text-slate-300 hover:text-yellow-400 transition-colors group text-xs md:text-sm"
+    >
+      <Github className="h-3.5 w-3.5 md:h-4 md:w-4 flex-shrink-0" />
+      {/* Mobile: faint opacity. Desktop: full opacity. Color inherited. */}
+      <span className="ml-1.5 inline opacity-60 md:opacity-100">
+        Github
+      </span>
+    </a>
+
+    {/* Resume Download Link */}
+    <a
+      href="/caudillojose_resume.pdf"
+      download
+      aria-label="Download Resume"
+      // Default/Mobile: yellow. Desktop: slate. Hover: yellow.
+      className="inline-flex items-center text-yellow-400 md:text-slate-300 hover:text-yellow-400 transition-colors group text-xs md:text-sm"
+    >
+      <Download className="h-3.5 w-3.5 md:h-4 md:w-4 flex-shrink-0" />
+      {/* Mobile: faint opacity. Desktop: full opacity. Color inherited. */}
+      <span className="ml-1.5 inline opacity-60 md:opacity-100">
+        Resume
+      </span>
+    </a>
   </div>
 );
 

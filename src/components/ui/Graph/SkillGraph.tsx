@@ -80,7 +80,7 @@ const SkillGraph = () => {
         </lineLoop>
 
         {/* Only draw major axes for key points */}
-        {skills.map((skill, index) => {
+        {skills.map((_skill, index) => {
           const angle = (index / skills.length) * Math.PI * 2;
           const x = Math.cos(angle) * 1.5;
           const y = Math.sin(angle) * 1.5;

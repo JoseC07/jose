@@ -1,11 +1,11 @@
-import { useState } from 'react';
+
 import { Button } from '../ui/button';
 import JaguarSilhouette from '../ui/JaguarSilhouette';
 import ProjectCard from '../ui/ProjectCard';
 import { scrollToElement } from '../../utils/scrollTo';
 
 export default function Projects() {
-  const [activeProject, setActiveProject] = useState<number | null>(null);
+  
 
   const handleButtonClick = () => {
     scrollToElement('projects');
@@ -41,8 +41,6 @@ export default function Projects() {
             <ProjectCard 
               key={index}
               project={project}
-              isActive={activeProject === index}
-              onClick={() => setActiveProject(index === activeProject ? null : index)}
             />
             {project.showDemoButton && (
               <div className="absolute bottom-4 right-4">

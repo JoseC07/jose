@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: 
+      context: .
+      target: build
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  backend:
+    build: 
+      context: .
+      target: backend
+    ports:
+      - "3001:3001"
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge 

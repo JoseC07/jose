@@ -13,4 +13,13 @@ export default defineConfig({
   worker: {
     format: 'es', // Ensure workers are bundled as ES modules
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 }); 

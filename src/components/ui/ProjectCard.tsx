@@ -6,11 +6,11 @@ interface Project {
 
 interface ProjectCardProps {
   project: Project;
-  isActive?: boolean;
-  onClick?: () => void;
+  // isActive?: boolean;
+  // onClick?: () => void;
 }
 
-export default function ProjectCard({ project, isActive = false, onClick }: ProjectCardProps) {
+export default function ProjectCard({ project}: ProjectCardProps) {
   // const cardClasses = `p-4 rounded-lg transition-all ${
   //   isActive ? 'bg-slate-800' : 'bg-slate-800/50'
   // } ${onClick ? 'cursor-pointer' : ''}`;

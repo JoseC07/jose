@@ -1,0 +1,6 @@
+    # .gitignore
+
+    node_modules
+    .env  # Add this line!
+    dist  # If you have a build output directory
+    *.log

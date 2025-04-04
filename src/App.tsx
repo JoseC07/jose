@@ -4,7 +4,7 @@ import ExperiencePage from './pages/Experience';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import LandingPage from './pages/LandingPage';
-import React, { ReactNode, useState, useEffect } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import './App.css';
 
 // Simple layout without navbar for landing page

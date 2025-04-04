@@ -5,7 +5,7 @@ import {
   ArrowRight, BookOpen, Calendar, ChevronRight, Code, Cpu, Database,
   Filter, Gamepad2, Search, Server, Star, Zap,
 } from "lucide-react"
-import GlobalFooter from "../components/sections/GlobalFooter"
+import { useHashScroll } from "../hooks/useHashScroll"
 
 const blogPosts = [
   {
@@ -86,6 +86,8 @@ const PlaceholderBadge = ({ children, className }: { children: React.ReactNode, 
 );
 
 export default function Blog() {
+  useHashScroll();
+
   const [searchTerm, setSearchTerm] = useState("")
   const [activeCategory, setActiveCategory] = useState("All")
 
@@ -116,11 +118,11 @@ export default function Blog() {
       <div id="main-content" className="container mx-auto px-6 py-16 max-w-6xl flex-grow relative z-10">
         <div className="mb-8 flex items-center">
           <Link
-            to="/experience"
+            to="/"
             className="group flex items-center text-yellow-400 hover:text-yellow-300 transition-colors"
           >
             <span className="mr-2 transform group-hover:-translate-x-1 transition-transform">←</span>
-            <span className="font-medium">Back to Experience</span>
+            <span className="font-medium">Back to Home</span>
           </Link>
         </div>
 
@@ -206,7 +208,7 @@ export default function Blog() {
             <div className="flex items-center gap-2 flex-wrap">
               <Filter className="h-4 w-4 text-slate-400" />
               <span className="text-sm text-slate-400">Filter by:</span>
-              <div className="flex space-x-1 p-1 bg-slate-800 border border-slate-700 rounded-md">
+              <div className="flex flex-wrap gap-1 p-1 bg-slate-800 border border-slate-700 rounded-md">
                 {categories.map((category) => (
                   <button
                     key={category}
@@ -266,7 +268,7 @@ export default function Blog() {
             ))}
         </div>
 
-        <div className="mb-16">
+        <div id="live-demos" className="mb-16 scroll-mt-20">
           <div className="flex items-center mb-6">
             <Code className="text-yellow-400 h-5 w-5 mr-2" />
             <h2 className="text-2xl font-bold">Interactive Demos</h2>
@@ -313,26 +315,7 @@ export default function Blog() {
             </div>
           </div>
         </div>
-
-        <div className="bg-slate-800 border border-slate-700 rounded-lg p-8 mb-12">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="text-2xl font-bold mb-2">Stay in the Loop</h3>
-              <p className="text-slate-300">Subscribe to get notified when new articles and demos are published.</p>
-            </div>
-            <div className="w-full md:w-auto flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="bg-slate-700 border border-slate-600 rounded-md focus:border-yellow-400 px-3 py-2 h-10 min-w-[250px] text-sm"
-              />
-              <Button className="bg-yellow-400 text-black hover:bg-yellow-300">Subscribe</Button>
-            </div>
-          </div>
-        </div>
       </div>
-
-      <GlobalFooter />
     </div>
   )
 } 

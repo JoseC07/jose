@@ -1,0 +1,68 @@
+# José Caudillo Portfolio - Project Overview
+
+## Project Type
+- Personal Portfolio Website
+- Built with Vite + React
+- Migrated from Next.js
+
+## Key Technologies
+- Frontend: React, React Router, Tailwind CSS
+- 3D Graphics: Three.js, @react-three/fiber
+- State Management: @tanstack/react-query
+- UI Components: Radix UI, Lucide Icons
+- Build Tool: Vite
+- TypeScript: Strongly typed codebase
+
+## Main Features
+1. Responsive Design
+2. Modern UI with Tailwind CSS
+3. React Router for navigation
+4. Fast development with Vite
+5. 3D visualizations using Three.js
+6. SEO optimized with meta tags and structured data
+7. Security headers implemented
+8. Accessibility features (skip links, ARIA labels)
+
+## Project Structure
+- src/
+  - components/ - Reusable React components
+  - pages/ - Page components for routing
+  - lib/ - Utility functions
+  - hooks/ - Custom React hooks
+- public/ - Static assets and sitemap
+- styles/ - CSS files (navigation.css)
+
+## Key Pages
+1. Landing Page (/) - Minimal layout
+2. Experience (/experience) - Professional background
+3. Blog (/blog) - Technical articles
+4. Contact (/contact) - Contact information
+
+## Security Features
+- Content Security Policy (CSP)
+- X-Content-Type-Options: nosniff
+- X-Frame-Options: DENY
+- Strict Referrer Policy
+
+## SEO Implementation
+- Meta tags for description, keywords, and author
+- Open Graph tags for social media
+- Structured data (JSON-LD)
+- Sitemap.xml
+- Robots.txt
+
+## Development Commands
+- npm install - Install dependencies
+- npm run dev - Start development server
+- npm run build - Build for production
+- npm run preview - Preview production build
+
+## Notable Components
+- SkillGraph.tsx - 3D visualization of skills
+- Layout.tsx - Main application layout
+- EmptyLayout.tsx - Minimal layout for landing page
+
+## Accessibility
+- Skip to main content link
+- ARIA labels for interactive elements
+- Semantic HTML structure 

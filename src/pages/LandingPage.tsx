@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom'; // Use Link for internal navigation
-import { Button } from '../components/ui/button'; // Reusing existing Button
 import CustomImage from '../components/ui/Image'; // Import the CustomImage component
 import BusinessCard from '../components/BusinessCard';
 

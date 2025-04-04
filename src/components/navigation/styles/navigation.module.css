@@ -3,13 +3,15 @@
 @tailwind utilities;
 
 .navContainer {
-  @apply fixed bottom-4 left-0 right-0 mx-auto max-w-3xl;
-  @apply bg-slate-800/10 backdrop-blur-sm rounded-lg shadow-lg;
-  @apply z-50 border border-slate-700 transition-all duration-300;
+  @apply fixed bottom-3 left-1/2 transform -translate-x-1/2;
+  @apply bg-slate-800/30 backdrop-blur-md; /* Cleaner glassmorphism */
+  @apply rounded-lg shadow-lg shadow-slate-900/20;
+  @apply z-50 border border-slate-500/20 transition-all duration-300 ease-in-out;
+  @apply ring-1 ring-white/10 ring-inset;
 }
 
 .expanded {
-  @apply h-auto py-4;
+  @apply h-auto pt-0 pb-0.5;
 }
 
 .collapsed {
@@ -17,27 +19,69 @@
 }
 
 .navLink {
-  @apply flex items-center text-white hover:text-yellow-400 transition-colors;
+  @apply flex items-center text-slate-100 hover:text-yellow-400 transition-colors duration-200 px-1 py-1 rounded;
+  position: relative; /* Add this for dropdown positioning */
 }
 
 .navLinkActive {
-  @apply text-yellow-400;
+  @apply text-yellow-400 bg-slate-700/40;
+}
+
+.blogLink {
+  @apply text-cyan-300 hover:text-cyan-200; /* Distinct color for blog */
+  @apply relative; /* For pseudo-element */
+}
+
+.blogLink::before {
+  content: '';
+  @apply absolute -inset-1 bg-cyan-900/20 rounded-lg -z-10; /* Subtle background for blog */
 }
 
 .blogLinkActive {
-  @apply text-blue-400;
+  @apply text-cyan-200 bg-cyan-900/40;
 }
 
 .subsectionList {
-  @apply mt-1 space-y-1 pl-4;
+  @apply mt-1 space-y-0.5 pl-6 border-l border-slate-600/50 ml-1.5;
 }
 
 .subsectionLink {
-  @apply flex items-center space-x-2 text-slate-300 hover:text-yellow-400;
+  @apply flex items-center space-x-1.5 text-xs text-slate-200 hover:text-yellow-300 transition-colors py-0.5 px-0.5;
 }
 
-@media (max-width: 768px) {
-  .navContainer {
-    @apply scale-90 origin-bottom;
-  }
-} 
+.iconWrapper {
+  @apply transition-transform duration-200 ease-in-out;
+}
+
+.iconWrapper:hover {
+  @apply scale-110; /* Subtle hover effect for icons */
+}
+
+.subIconWrapper {
+  @apply transition-transform duration-200 ease-in-out;
+}
+
+.subIconWrapper:hover {
+  @apply scale-110; /* Subtle hover effect for subsection icons */
+}
+
+button:active {
+  border-style: none;
+}
+
+/* Add these new styles */
+.subsectionDropdown {
+  @apply absolute bottom-full left-1/2 -translate-x-1/2 bg-slate-800/90 backdrop-blur-sm rounded-lg p-1.5 shadow-lg border border-slate-700/50 min-w-[160px];
+  @apply transition-all duration-200 ease-in-out;
+  @apply transform origin-top;
+}
+
+.subsectionDropdownItem {
+  @apply flex items-center space-x-2 px-2 py-1 text-sm text-slate-200 hover:bg-slate-700/50 rounded transition-colors;
+  @apply hover:translate-x-1;
+}
+
+/* Add hover animation for dropdown */
+.group:hover .subsectionDropdown {
+  @apply opacity-100 translate-y-0;
+}

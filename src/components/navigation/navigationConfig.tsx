@@ -1,5 +1,4 @@
-import React from 'react';
-import { Briefcase, Code, Award, Mail, Newspaper } from 'lucide-react';
+import { Briefcase, Code, Mail, BookOpen, User } from 'lucide-react';
 
 interface SubsectionItem {
   id: string;
@@ -21,32 +20,25 @@ export interface NavigationItem {
 export const navigationItems: NavigationItem[] = [
   {
     id: 'experience',
-    href: '/experience',
-    icon: <Briefcase size={20} />,
     label: 'Experience',
-    prefetch: true,
+    href: '/experience',
+    icon: <Briefcase size={16} />,
     subsections: [
-      { id: 'projects', href: '#projects', icon: <Code size={16} />, label: 'Projects' },
-      { id: 'skills', href: '#skills', icon: <Award size={16} />, label: 'Skills' },
+      { id: 'about', label: 'About', href: '#about', icon: <User size={16} /> },
+      { id: 'work', label: 'Work History', href: '#work', icon: <Briefcase size={16} /> },
+      { id: 'skills', label: 'Skills', href: '#skills', icon: <Code size={16} /> },
     ],
   },
   {
     id: 'blog',
-    href: '/blog',
-    icon: <Newspaper size={20} />,
     label: 'Blog',
-    prefetch: true,
-    subsections: [
-      { id: 'live-demos', href: '#live-demos', icon: <Code size={16} />, label: 'Live Demos' },
-      { id: 'case-studies', href: '#case-studies', icon: <Code size={16} />, label: 'Case Studies' },
-      { id: 'system-design', href: '#system-design', icon: <Award size={16} />, label: 'System Design' },
-    ],
+    href: '/blog',
+    icon: <BookOpen size={16} />,
   },
   {
     id: 'contact',
-    href: '/contact',
-    icon: <Mail size={20} />,
     label: 'Contact',
-    prefetch: true,
+    href: '/contact',
+    icon: <Mail size={16} />,
   },
 ]; 
