@@ -1,0 +1,52 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18 # Or your desired Node.js version
+    commands:
+      # Install frontend dependencies
+      - echo "Installing frontend dependencies..."
+      - cd <path-to-frontend> # Navigate to frontend directory
+      - npm install
+      # Install backend dependencies (example for one function)
+      - echo "Installing backend dependencies..."
+      - cd <path-to-lambda> # Navigate back or to lambda dir
+      - npm install
+      - cd ../ # Navigate back if needed
+
+  build:
+    commands:
+      # Build frontend
+      - echo "Building frontend..."
+      - cd <path-to-frontend>
+      - npm run build # Or your specific build command
+      - cd ../ # Navigate back
+      # Package lambda (example for one function)
+      - echo "Packaging Lambda function..."
+      - cd <path-to-lambda>
+      - zip -r ../lambda_package.zip . # Zip contents including node_modules
+      - cd ../ # Navigate back
+
+artifacts:
+  files:
+    # Frontend files from the build output directory (e.g., 'dist')
+    - '<path-to-frontend>/dist/**/*'
+    # Packaged Lambda function
+    - 'lambda_package.zip'
+  # Discard paths so S3 deploy puts files in the root of the bucket
+  discard-paths: yes
+  # Define artifact names if needed for deployment stages
+  name: BuildOutput
+  secondary-artifacts:
+    LambdaCode:
+      files:
+        - lambda_package.zip
+      discard-paths: yes
+      name: LambdaPackageOutput
+    FrontendCode:
+      base-directory: '<path-to-frontend>/dist'
+      files:
+        - '**/*'
+      discard-paths: no # Keep paths relative to base-directory for S3
+      name: FrontendPackageOutput
