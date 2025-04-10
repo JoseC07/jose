@@ -4,7 +4,7 @@ dotenv.config(); // Load variables from .env into process.env
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import AWS from 'aws-sdk';
+// import AWS from 'aws-sdk';
 import nodemailer from 'nodemailer';
 import sanitizeHtml from 'sanitize-html'; // Import sanitize-html
 
@@ -26,15 +26,15 @@ const transporter = nodemailer.createTransport({
 });
 // --- End Email Configuration ---
 
-// Use local mocks for development
-const isLocal = process.env.NODE_ENV === 'development';
-const s3 = isLocal ? {
-  putObject: () => ({ promise: () => Promise.resolve() })
-} : new AWS.S3();
+// // Use local mocks for development
+// const isLocal = process.env.NODE_ENV === 'development';
+// // const s3 = isLocal ? {
+// //   putObject: () => ({ promise: () => Promise.resolve() })
+// // } : new AWS.S3();
 
-const dynamoDB = isLocal ? {
-  put: () => ({ promise: () => Promise.resolve() })
-} : new AWS.DynamoDB.DocumentClient();
+// const dynamoDB = isLocal ? {
+//   put: () => ({ promise: () => Promise.resolve() })
+// } : new AWS.DynamoDB.DocumentClient();
 
 // In-memory store (replace with database in production)
 // const engagementData: any[] = []; // Remove or comment out in-memory store
@@ -194,13 +194,13 @@ app.post('/api/newsletter', async (req, res) => {
 // --- END: Newsletter Subscription Endpoint ---
 
 // Keep this test endpoint
-app.get('/api/test', (_req, res) => {
-  res.json({
-    status: 'OK',
-    environment: process.env.NODE_ENV,
-    awsConfigured: !isLocal
-  });
-});
+// app.get('/api/test', (_req, res) => {
+//   res.json({
+//     status: 'OK',
+//     environment: process.env.NODE_ENV,
+//     awsConfigured: !isLocal
+//   });
+// });
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

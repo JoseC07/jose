@@ -1,6 +1,5 @@
 import { Canvas } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
-import * as THREE from 'three';
 import { useMemo, useEffect, useState } from 'react';
 
 const skills = [
@@ -100,7 +99,7 @@ const SkillGraph = () => {
         })}
 
         {/* Add subtle fill to the polygon */}
-        <mesh>
+        {/* <mesh>
           <shapeGeometry>
             {(() => {
               const shape = new THREE.Shape();
@@ -113,7 +112,7 @@ const SkillGraph = () => {
             })()}
           </shapeGeometry>
           <meshBasicMaterial color="#ffd700" opacity={0.2} transparent={true} />
-        </mesh>
+        </mesh> */}
 
         {/* Polygon Outline with thicker line */}
         <lineLoop>
